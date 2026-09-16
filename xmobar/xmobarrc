@@ -1,0 +1,32 @@
+Config
+  { font = "xft:JetBrainsMono Nerd Font Mono-16"
+  , additionalFonts = []
+  , bgColor = "#282828"
+  , fgColor = "#ebdbb2"
+
+  -- 5 px de marge en haut, à gauche et à droite
+  , position = Static
+      { xpos = 5
+      , ypos = 5
+      , width = 3430
+      , height = 30
+      }
+
+  , sepChar = "%"
+  , alignSep = "}{"
+  , allDesktops = True
+  , persistent = True
+
+, template =
+    "  %_XMONAD_LOG% }{ \
+    \<fc=#a89984>%date%</fc>  "
+
+  , commands =
+      [ Run XPropertyLog "_XMONAD_LOG"
+
+      , Run Date
+        "%Y-%m-%d  %H:%M"
+        "date"
+        10
+      ]
+  }
