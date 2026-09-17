@@ -15,6 +15,7 @@ myAppKeys =
     , ("M-d",        spawn "dmenu_run")
     , ("M-S-l",      spawn "xsecurelock")
     , ("M-f",        spawn "firefox")
+    , ("M-p",        spawn "pycharm-community")
     , ("M-S-r",      spawn "xmonad --recompile && xmonad --restart")
     ]
 
@@ -71,10 +72,9 @@ myXmobarPP = def
                             [ws, unwords extras]
     }
 
-
 myStatusBar =
     statusBarProp
-        "/home/sam/.nix-profile/bin/xmobar /home/sam/.config/xmobar/xmobarrc"
+        "xmobar /home/sam/.config/xmobar/xmobarrc"
         (pure myXmobarPP)
 
 -- ------------------------------------------------------------
@@ -83,6 +83,7 @@ myStatusBar =
 
 myStartupHook :: X ()
 myStartupHook = do
+    spawnOnce "xrandr --output HDMI-1 --mode 3440x1440 --rate 60 --primary --output eDP-1 --off"
     spawnOnce "xsetroot -solid '#282828'"
 
 -- ------------------------------------------------------------

@@ -1,0 +1,34 @@
+# Default editio
+export EDITOR=nvim
+export VISUAL=nvim
+
+# Prompt
+PROMPT='%F{#d79921}%~%f
+%F{#cc6666}>%f '
+
+# Editor
+export EDITOR=nvim
+
+# Aliases
+alias ls='lsd -l'
+alias cat='batcat'
+alias n='nvim'
+alias gt='tree --gitignore'
+alias sOdoo='ssh sam@161.97.122.94'
+alias sSam='ssh sam@13.140.190.145'
+
+# Case-insensitive completion
+setopt NO_CASE_GLOB
+
+zstyle ':completion:*' matcher-list \
+  'm:{[:lower:]}={[:upper:]}' \
+  'r:|[._-]=* r:|=*' \
+  'l:|=* r:|=*'
+
+# FZF
+source <(fzf --zsh)
+
+# Automatically start/attach tmux
+if [[ -z "$TMUX" && -n "$PS1" ]]; then
+  tmux new-session -A -s main
+fi
